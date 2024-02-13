@@ -5,14 +5,15 @@ import Link from "next/link";
 
 const Offline = () => {
   const isOnline = useOnline();
-  const router = useRouter();
-  useEffect(() => {
-    // if (router.isReady) {
-    if (isOnline == true) {
-      router.push("/");
-    }
-    // }
-  }, [isOnline]);
+  // const router = useRouter();
+  // useEffect(() => {
+  //   // if (router.isReady) {
+  //   if (isOnline == true) {
+  //     // router.push("/");
+  //     alert("online");
+  //   }
+  //   // }
+  // }, [isOnline]);
   return (
     <div>
       <p>offline</p>

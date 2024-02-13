@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import useOnline from "@/hooks/useOnline";
 import "@/styles/globals.css";
 import { useRouter } from "next/router";
@@ -8,12 +9,15 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   const isOnline = useOnline();
   useEffect(() => {
-    console.log(router);
+    console.error({isOnline});
     if (isOnline == false && router.route != "/_offline") {
-      // if (router.route != "/login") {
+      //   // if (router.route != "/login") {
       router.push("/_offline");
-      // }
+      //   // }
     }
+    // if (isOnline == true) {
+    //   alert("online");
+    // }
   }, [isOnline, router]);
   return (
     <RecoilRoot>
