@@ -5,20 +5,25 @@ import Link from "next/link";
 
 const Offline = () => {
   const isOnline = useOnline();
-  // const router = useRouter();
-  // useEffect(() => {
-  //   // if (router.isReady) {
-  //   if (isOnline == true) {
-  //     // router.push("/");
-  //     alert("online");
-  //   }
-  //   // }
-  // }, [isOnline]);
+  const router = useRouter();
+  useEffect(() => {
+    if (isOnline == true) {
+      setTimeout(() => {
+        router.push("/");
+      }, 3000);
+    }
+  }, [isOnline]);
   return (
     <div>
-      <p>offline</p>
+      <p>You are in offline mode</p>
       {isOnline == true ? (
-        <Link href="/">Click here if you already online</Link>
+        <>
+          <p>Welcome back, redirecting in 3 seconds</p>
+          <p>
+            <Link href="/">Click Here</Link>
+            <span>If you are not redirected</span>
+          </p>
+        </>
       ) : null}
     </div>
   );

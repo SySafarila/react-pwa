@@ -4,6 +4,8 @@ const withPWA = require("next-pwa")({
   fallbacks: {
     document: "/_offline",
   },
+  reloadOnOnline: false,
+  
 });
 
 const nextConfig = {

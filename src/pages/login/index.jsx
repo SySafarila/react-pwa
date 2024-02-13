@@ -28,7 +28,7 @@ export default function Login() {
         username: username,
         password: password,
       });
-      setUser(username, password);
+      setUser({ username, password });
       router.push("/");
     } catch (error) {
       alert("Login failed");

@@ -9,16 +9,17 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   const isOnline = useOnline();
   useEffect(() => {
-    console.error({isOnline});
+    // console.error({ isOnline });
     if (isOnline == false && router.route != "/_offline") {
       //   // if (router.route != "/login") {
       router.push("/_offline");
+      // alert("offline");
       //   // }
     }
-    // if (isOnline == true) {
-    //   alert("online");
-    // }
-  }, [isOnline, router]);
+    if (isOnline == true) {
+      // alert("online");
+    }
+  }, [isOnline]);
   return (
     <RecoilRoot>
       <Component {...pageProps} />
