@@ -1,6 +1,7 @@
 import useOnline from "@/hooks/useOnline";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Link from "next/link";
 
 const Offline = () => {
   const isOnline = useOnline();
@@ -15,6 +16,9 @@ const Offline = () => {
   return (
     <div>
       <p>offline</p>
+      {isOnline == true ? (
+        <Link href="/">Click here if you already online</Link>
+      ) : null}
     </div>
   );
 };
