@@ -11,7 +11,7 @@
     ],
     "theme_color": "#FFFFFF",
     "background_color": "#FFFFFF",
-    "start_url": "/",
+    "start_url": "https://react-pwa-dun.vercel.app",
     "display": "standalone",
     "orientation": "portrait"
   }
