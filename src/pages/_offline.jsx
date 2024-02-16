@@ -15,7 +15,6 @@ const Offline = () => {
   }, [isOnline]);
   return (
     <div>
-      <p>You are in offline mode</p>
       {isOnline == true ? (
         <>
           <p>Welcome back, redirecting in 3 seconds</p>
@@ -24,7 +23,9 @@ const Offline = () => {
             <span>If you are not redirected</span>
           </p>
         </>
-      ) : null}
+      ) : (
+        <p>You are in offline mode</p>
+      )}
     </div>
   );
 };
