@@ -1,24 +1,36 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import useOnline from "@/hooks/useOnline";
 import "@/styles/globals.css";
+import axios from "axios";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
 
 export default function App({ Component, pageProps }) {
+  const [checkConnection, setCheckConnection] = useState(false);
   const router = useRouter();
   const isOnline = useOnline();
+
+  const pingConnection = async () => {
+    setCheckConnection(true);
+    try {
+      await axios.get("/api/ping");
+    } catch (error) {
+      if (router.route != "/_offline") {
+        router.push("/_offline");
+      }
+    }
+  };
+
   useEffect(() => {
-    // console.error({ isOnline });
+    if (!checkConnection) {
+      pingConnection();
+    }
     if (isOnline == false && router.route != "/_offline") {
-      //   // if (router.route != "/login") {
       router.push("/_offline");
-      // alert("offline");
-      //   // }
     }
     if (isOnline == true) {
-      // alert("online");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOnline]);
   return (
     <RecoilRoot>

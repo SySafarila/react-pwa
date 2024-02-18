@@ -10,6 +10,7 @@ export default function Home() {
     if (!user) {
       router.push("/login");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
   return (
     <div className="p-4">
@@ -18,7 +19,9 @@ export default function Home() {
           <h1>
             Hello <b>{user.username ?? "-"}</b>
           </h1>
-          <button className="border" onClick={() => setUser(null)}>Logout</button>
+          <button className="border" onClick={() => setUser(null)}>
+            Logout
+          </button>
         </>
       ) : null}
     </div>
