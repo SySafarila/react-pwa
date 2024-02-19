@@ -5,7 +5,19 @@ const withPWA = require("next-pwa")({
     document: "/_offline",
   },
   reloadOnOnline: false,
-  
+  runtimeCaching: [
+    {
+      urlPattern: /\/api\/.*$/i,
+      handler: 'NetworkOnly',
+      options: {
+        cacheName: '/api/ping',
+        expiration: {
+          maxEntries: 32,
+          maxAgeSeconds: 2
+        }
+      }
+    },
+  ],
 });
 
 const nextConfig = {
