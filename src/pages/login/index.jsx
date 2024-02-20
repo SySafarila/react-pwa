@@ -57,7 +57,7 @@ export default function Login() {
         </h1>
         <p className="w-full text-center">
           Masuk sistem atau{" "}
-          <Link href="/register" className="font-bold">
+          <Link href="/register" className="font-bold hover:underline">
             Buat Akun
           </Link>
         </p>
@@ -90,18 +90,18 @@ export default function Login() {
           <button
             type="button"
             onClick={() => setShowPassword((current) => !current)}
-            className="absolute right-2 top-[34px]"
+            className="absolute right-2 top-[36px]"
           >
             {showPassword ? (
-              <Image src={visibilityOff} alt="off" />
+              <Image src={visibilityOff} alt="password off" />
             ) : (
-              <Image src={visibilityOn} alt="on" />
+              <Image src={visibilityOn} alt="password on" />
             )}
           </button>
         </div>
         <button
           type="submit"
-          className="border p-2 bg-gray-800 hover:bg-gray-950 text-white rounded"
+          className="border p-2 bg-gray-800 hover:bg-gray-950 text-white rounded transition-colors"
         >
           {isSend ? "Loading..." : "Masuk"}
         </button>
