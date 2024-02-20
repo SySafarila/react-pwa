@@ -42,3 +42,4 @@ public/workbox*
 public/sw*
 public/fallback*
 public/worker-development.js
+public/worker*

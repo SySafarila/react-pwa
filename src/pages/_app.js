@@ -14,6 +14,9 @@ export default function App({ Component, pageProps }) {
     setCheckConnection(true);
     try {
       await axios.get("/api/ping");
+      if (router.route == "/_offline") {
+        router.push("/");
+      }
     } catch (error) {
       if (router.route != "/_offline") {
         router.push("/_offline");

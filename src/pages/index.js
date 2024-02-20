@@ -1,5 +1,6 @@
 import { userState } from "@/utilities/recoil";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
@@ -7,7 +8,6 @@ import celcius from "../../public/images/celsius.png";
 import distance from "../../public/images/distance.png";
 import mass from "../../public/images/mass.png";
 import time from "../../public/images/time.png";
-import Link from "next/link";
 
 export default function Home() {
   const [user, setUser] = useRecoilState(userState);
@@ -25,7 +25,7 @@ export default function Home() {
         <Link href="/">
           <Image
             src={celcius}
-            alt="dummy image"
+            alt="Celcius image"
             className="w-32 mx-auto mb-1 object-contain"
           />
           <span className="block text-center">Suhu</span>
@@ -33,7 +33,7 @@ export default function Home() {
         <Link href="/">
           <Image
             src={distance}
-            alt="dummy image"
+            alt="Distance image"
             className="w-32 mx-auto mb-1 object-contain"
           />
           <span className="block text-center">Jarak</span>
@@ -41,7 +41,7 @@ export default function Home() {
         <Link href="/">
           <Image
             src={mass}
-            alt="dummy image"
+            alt="Mass image"
             className="w-32 mx-auto mb-1 object-contain"
           />
           <span className="block text-center">Massa</span>
@@ -49,7 +49,7 @@ export default function Home() {
         <Link href="/">
           <Image
             src={time}
-            alt="dummy image"
+            alt="Time image"
             className="w-32 mx-auto mb-1 object-contain"
           />
           <span className="block text-center">Waktu</span>

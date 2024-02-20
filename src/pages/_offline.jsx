@@ -15,15 +15,17 @@ const Offline = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOnline]);
   return (
-    <div>
+    <div className="p-4 min-h-screen w-full max-w-screen-sm mx-auto items-center justify-center flex">
       {isOnline == true ? (
-        <>
-          <p>Welcome back, redirecting in 3 seconds</p>
+        <div className="flex flex-col items-center">
+          <p className="text-center block">Your connection is back, redirecting to homepage in 3 seconds</p>
           <p>
-            <Link href="/">Click Here</Link>
-            <span>If you are not redirected</span>
+            <Link href="/" className="underline">
+              Click Here
+            </Link>
+            <span> If you are not redirected</span>
           </p>
-        </>
+        </div>
       ) : (
         <p>You are in offline mode</p>
       )}

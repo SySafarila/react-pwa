@@ -1,14 +1,15 @@
-import { useForm } from "react-hook-form";
-import axios from "axios";
-import { useRecoilState } from "recoil";
 import { userState } from "@/utilities/recoil";
+import axios from "axios";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import appLogo from "../../../public/vercel-logo.png";
-import Link from "next/link";
-import visibilityOn from "../../../public/icons/visibility-on.svg";
+import { useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
+import Swal from "sweetalert2";
 import visibilityOff from "../../../public/icons/visibility-off.svg";
+import visibilityOn from "../../../public/icons/visibility-on.svg";
+import appLogo from "../../../public/vercel-logo.png";
 
 export default function Login() {
   const [user, setUser] = useRecoilState(userState);
@@ -24,7 +25,14 @@ export default function Login() {
 
   useEffect(() => {
     if (user) {
-      router.push("/");
+      Swal.fire({
+        title: "Info",
+        text: "Kamu telah berhasil login sebelumnya!",
+        icon: "info",
+        confirmButtonColor: "rgb(31 41 55 / 1)",
+      }).then(() => {
+        router.push("/");
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -44,7 +52,12 @@ export default function Login() {
       router.push("/");
     } catch (error) {
       setIsSend(false);
-      alert("Login failed");
+      Swal.fire({
+        title: "Gagal",
+        text: "Pastikan username dan password benar!",
+        icon: "error",
+        confirmButtonColor: "rgb(31 41 55 / 1)",
+      });
     }
   };
 
@@ -64,7 +77,7 @@ export default function Login() {
       </div>
       <form
         onSubmit={handleSubmit(sendForm)}
-        className="flex flex-col gap-2 lg:flex-row w-full"
+        className="flex flex-col gap-2 w-full"
       >
         <div className="flex flex-col relative gap-1">
           <label htmlFor="username">Username</label>
@@ -81,12 +94,11 @@ export default function Login() {
           <label htmlFor="password">Password</label>
           <input
             type={showPassword ? "text" : "password"}
-            {...register("password", { required: true, minLength: 8 })}
+            {...register("password", { required: true })}
             placeholder=""
             className="border p-2 rounded"
             required
           />
-          <small>Minimal 8 karakter</small>
           <button
             type="button"
             onClick={() => setShowPassword((current) => !current)}
@@ -101,7 +113,7 @@ export default function Login() {
         </div>
         <button
           type="submit"
-          className="border p-2 bg-gray-800 hover:bg-gray-950 text-white rounded transition-colors"
+          className="border p-2 bg-gray-800 hover:bg-gray-950 text-white rounded transition-colors mt-2"
         >
           {isSend ? "Loading..." : "Masuk"}
         </button>
