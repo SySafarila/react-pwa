@@ -66,25 +66,27 @@ export default function Login() {
         onSubmit={handleSubmit(sendForm)}
         className="flex flex-col gap-2 lg:flex-row w-full"
       >
-        <div className="flex flex-col relative">
+        <div className="flex flex-col relative gap-1">
           <label htmlFor="username">Username</label>
           <input
             type="text"
-            {...register("username")}
+            {...register("username", { required: true })}
             placeholder=""
             className="border p-2 rounded"
             id="username"
-            value={"asdf"}
+            required
           />
         </div>
-        <div className="flex flex-col relative">
+        <div className="flex flex-col relative gap-1">
           <label htmlFor="password">Password</label>
           <input
             type={showPassword ? "text" : "password"}
-            {...register("password")}
+            {...register("password", { required: true, minLength: 8 })}
             placeholder=""
             className="border p-2 rounded"
+            required
           />
+          <small>Minimal 8 karakter</small>
           <button
             type="button"
             onClick={() => setShowPassword((current) => !current)}
@@ -101,7 +103,7 @@ export default function Login() {
           type="submit"
           className="border p-2 bg-gray-800 hover:bg-gray-950 text-white rounded"
         >
-          Masuk
+          {isSend ? "Loading..." : "Masuk"}
         </button>
         <div className="flex justify-center">
           <Link href="/forgot-password" className="hover:underline">
