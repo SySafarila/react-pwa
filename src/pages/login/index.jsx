@@ -3,10 +3,17 @@ import axios from "axios";
 import { useRecoilState } from "recoil";
 import { userState } from "@/utilities/recoil";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import appLogo from "../../../public/vercel-logo.png";
+import Link from "next/link";
+import visibilityOn from "../../../public/icons/visibility-on.svg";
+import visibilityOff from "../../../public/icons/visibility-off.svg";
 
 export default function Login() {
   const [user, setUser] = useRecoilState(userState);
+  const [isSend, setIsSend] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -23,6 +30,10 @@ export default function Login() {
   }, []);
 
   const sendForm = async (data) => {
+    if (isSend == true) {
+      return;
+    }
+    setIsSend(true);
     const { username, password } = data;
     try {
       await axios.post("/api/login", {
@@ -32,31 +43,71 @@ export default function Login() {
       setUser({ username, password });
       router.push("/");
     } catch (error) {
+      setIsSend(false);
       alert("Login failed");
     }
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 min-h-screen flex flex-col items-center justify-center gap-4 max-w-screen-sm mx-auto">
+      <Image src={appLogo} alt="logo" className="w-[8rem]" />
+      <div>
+        <h1 className="uppercase w-full text-center font-bold text-3xl">
+          React PWA
+        </h1>
+        <p className="w-full text-center">
+          Masuk sistem atau{" "}
+          <Link href="/register" className="font-bold">
+            Buat Akun
+          </Link>
+        </p>
+      </div>
       <form
         onSubmit={handleSubmit(sendForm)}
-        className="flex flex-col gap-2 lg:flex-row"
+        className="flex flex-col gap-2 lg:flex-row w-full"
       >
-        <input
-          type="text"
-          {...register("username")}
-          placeholder="username"
-          className="border"
-        />
-        <input
-          type="text"
-          {...register("password")}
-          placeholder="password"
-          className="border"
-        />
-        <button type="submit" className="border">
-          Login
+        <div className="flex flex-col relative">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            {...register("username")}
+            placeholder=""
+            className="border p-2 rounded"
+            id="username"
+            value={"asdf"}
+          />
+        </div>
+        <div className="flex flex-col relative">
+          <label htmlFor="password">Password</label>
+          <input
+            type={showPassword ? "text" : "password"}
+            {...register("password")}
+            placeholder=""
+            className="border p-2 rounded"
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword((current) => !current)}
+            className="absolute right-2 top-[34px]"
+          >
+            {showPassword ? (
+              <Image src={visibilityOff} alt="off" />
+            ) : (
+              <Image src={visibilityOn} alt="on" />
+            )}
+          </button>
+        </div>
+        <button
+          type="submit"
+          className="border p-2 bg-gray-800 hover:bg-gray-950 text-white rounded"
+        >
+          Masuk
         </button>
+        <div className="flex justify-center">
+          <Link href="/forgot-password" className="hover:underline">
+            Lupa Password
+          </Link>
+        </div>
       </form>
     </div>
   );
