@@ -1,17 +1,46 @@
 {
-    "name": "React PWA",
-    "short_name": "RPWA",
-    "icons": [
-      {
-        "src": "/vercel-logo.png",
-        "sizes": "192x192",
-        "type": "image/png",
-        "purpose": "any maskable"
-      }
-    ],
-    "theme_color": "#FFFFFF",
-    "background_color": "#FFFFFF",
-    "start_url": "/",
-    "display": "standalone",
-    "orientation": "portrait"
-  }
+  "name": "React PWA",
+  "short_name": "RPWA",
+  "description": "Project ini merupakan tugas dari matakuliah Mobile Programming II semester 8 di Universitas Putra Indonesia",
+  "icons": [
+    {
+      "src": "/vercel-logo.png",
+      "sizes": "360x360",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "screenshots": [
+    {
+      "src": "/images/screenshots/login-desktop.png",
+      "sizes": "2048x1684",
+      "type": "image/png",
+      "label": "Login desktop",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/images/screenshots/home-desktop.png",
+      "sizes": "2048x1684",
+      "type": "image/png",
+      "label": "Home desktop",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/images/screenshots/login.png",
+      "sizes": "1170x2532",
+      "type": "image/png",
+      "label": "Login"
+    },
+    {
+      "src": "/images/screenshots/home.png",
+      "sizes": "1170x2532",
+      "type": "image/png",
+      "label": "Home"
+    }
+  ]
+}

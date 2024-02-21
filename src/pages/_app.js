@@ -35,6 +35,7 @@ export default function App({ Component, pageProps }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOnline]);
+
   return (
     <RecoilRoot>
       <Component {...pageProps} />
