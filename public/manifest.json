@@ -42,5 +42,19 @@
       "type": "image/png",
       "label": "Home"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "Developer Portfolio",
+      "short_name": "Dev Portfolio",
+      "Description": "Lihat portofolio developer",
+      "url": "/redirect?to=https://www.sysafarila.my.id",
+      "icons:": [
+        {
+          "src": "/icons/sysafarila.png",
+          "size": "96x96"
+        }
+      ]
+    }
   ]
 }
