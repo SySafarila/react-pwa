@@ -10,6 +10,8 @@ import Swal from "sweetalert2";
 import visibilityOff from "../../../public/icons/visibility-off.svg";
 import visibilityOn from "../../../public/icons/visibility-on.svg";
 import appLogo from "../../../public/vercel-logo.png";
+import sp1 from "../../../public/images/spongebob-1.png";
+import sp2 from "../../../public/images/spongebob-2.png";
 
 export default function Login() {
   const [user, setUser] = useRecoilState(userState);
@@ -63,7 +65,18 @@ export default function Login() {
 
   return (
     <div className="p-4 min-h-screen flex flex-col items-center justify-center gap-4 max-w-screen-sm mx-auto">
-      <Image src={appLogo} alt="logo" className="w-[8rem]" />
+      <div className="relative w-56 overflow-hidden">
+        <Image
+          src={sp1}
+          alt="sp1"
+          className={`absolute ${
+            showPassword ? "" : "translate-y-[3rem]"
+          } z-10 transition-transform transform`}
+        />
+        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 transform bg-[#18191E] size-[7rem]"></div>
+        <div className="absolute left-1/2 transform -translate-x-1/2 w-24 h-8 bottom-0 z-20 bg-white"></div>
+        <Image src={sp2} alt="sp2" className="z-20 relative" />
+      </div>
       <div>
         <h1 className="uppercase w-full text-center font-bold text-3xl">
           React PWA
@@ -102,7 +115,7 @@ export default function Login() {
           <button
             type="button"
             onClick={() => setShowPassword((current) => !current)}
-            className="absolute right-2 top-[36px]"
+            className="absolute right-2 h-[42px] bottom-0 flex items-center"
           >
             {showPassword ? (
               <Image src={visibilityOff} alt="password off" />
