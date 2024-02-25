@@ -51,7 +51,7 @@ export default function Login() {
         password: password,
       });
       setUser({ username, password });
-      router.push("/");
+      router.replace("/");
     } catch (error) {
       setIsSend(false);
       Swal.fire({
@@ -72,10 +72,11 @@ export default function Login() {
           className={`absolute ${
             showPassword ? "" : "translate-y-[3rem]"
           } z-10 transition-transform transform`}
+          priority={true}
         />
         <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 transform bg-[#18191E] size-[7rem]"></div>
         <div className="absolute left-1/2 transform -translate-x-1/2 w-24 h-8 bottom-0 z-20 bg-white"></div>
-        <Image src={sp2} alt="sp2" className="z-20 relative" />
+        <Image src={sp2} alt="sp2" className="z-20 relative" priority={true} />
       </div>
       <div>
         <h1 className="uppercase w-full text-center font-bold text-3xl">

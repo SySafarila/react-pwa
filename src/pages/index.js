@@ -15,7 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!user) {
-      router.push("/login");
+      router.replace("/login");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
@@ -31,6 +31,7 @@ export default function Home() {
                 src={celcius}
                 alt="Celcius image"
                 className="w-32 mx-auto mb-1 object-contain"
+                priority={true}
               />
               <span className="block text-center">Suhu</span>
             </Link>
@@ -39,6 +40,7 @@ export default function Home() {
                 src={distance}
                 alt="Distance image"
                 className="w-32 mx-auto mb-1 object-contain"
+                priority={true}
               />
               <span className="block text-center">Jarak</span>
             </Link>
@@ -47,6 +49,7 @@ export default function Home() {
                 src={mass}
                 alt="Mass image"
                 className="w-32 mx-auto mb-1 object-contain"
+                priority={true}
               />
               <span className="block text-center">Massa</span>
             </Link>
@@ -55,6 +58,7 @@ export default function Home() {
                 src={time}
                 alt="Time image"
                 className="w-32 mx-auto mb-1 object-contain"
+                priority={true}
               />
               <span className="block text-center">Waktu</span>
             </Link>
